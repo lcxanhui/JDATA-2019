@@ -24,7 +24,7 @@
 
 ## 代码思路
 时间滑窗法+lightgbm+xgboost+catboost<br>  
-* A榜线上0.061<br> 
+* A榜线上0.060<br> 
 * B榜线上0.060<br> 
 
 ## 代码环境
