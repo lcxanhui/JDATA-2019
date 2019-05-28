@@ -23,7 +23,11 @@
 其中：Precise为准确率，Recall为召回率； F11 是label=1或0的F1值，F12 是pred=1或0的F1值。
 
 ## 代码思路
-时间滑窗法+lightgbm+xgboost+catboost<br>  
+时间滑窗法+lightgbm+xgboost+catboost<br> 
+根据滑窗法，利用一周的时间作为预测部分，将2周/3周时间的用户作为训练部分，并且将4周/6周的用户和商铺、商品之间的交互行为进行特征提取。<br>
+下图所示的为3周时间的用户作为训练部分，6周的用户和商铺、商品之间的交互行为进行特征提取的表格示意图
+![](https://github.com/lcxanhui/JDATA-2019/blob/master/picture/time_series.PNG)
+![](https://github.com/lcxanhui/JDATA-2019/blob/master/picture/huachuang.PNG)
 * A榜线上0.060<br> 
 * B榜线上0.060<br> 
 
