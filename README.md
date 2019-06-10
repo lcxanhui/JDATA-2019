@@ -23,16 +23,20 @@
 其中：Precise为准确率，Recall为召回率； F11 是label=1或0的F1值，F12 是pred=1或0的F1值。
 
 ## 代码思路
+首先此次的比赛是一种典型的样本不平衡问题，用户购买和不够购买的行为大概的比例为1：100<br>
 时间滑窗法+lightgbm+xgboost+catboost<br> 
-根据滑窗法，利用一周的时间作为预测部分，将2周/3周时间的用户作为训练部分，并且将4周/6周的用户和商铺、商品之间的交互行为进行特征提取。<br>
+由于type==5(加入购物车行为)只存在4月8号到4月15号这一周行为，存在数据缺失问题，因此在构建测试集和训练集均将type==5的数据删除；<br>
+根据滑窗法，利用一周的时间作为预测部分，将1周/2周/3周时间的用户作为训练部分，并且将2周/4周/6周的用户和商铺、商品之间的交互行为进行特征提取。<br>
 下图所示的为3周时间的用户作为训练部分，6周的用户和商铺、商品之间的交互行为进行特征提取的表格示意图
-![](https://github.com/lcxanhui/JDATA-2019/blob/master/picture/time_series.PNG)
+![](https://github.com/lcxanhui/JDATA-2019/blob/master/picture/time_series.PNG "3周时间的用户作为训练部分")
 ![](https://github.com/lcxanhui/JDATA-2019/blob/master/picture/huachuang.PNG)
-* A榜线上0.060<br> 
-* B榜线上0.060<br> 
+* A榜线上0.0614<br> Rank7
+* B榜线上0.0605<br> Rank16
 
 ## 代码环境
+run.sh
 
 ## 参考资料
 * 官方思路解答: [ 知乎：JData大数据比赛第三届非官方答疑贴](https://zhuanlan.zhihu.com/p/64503113)
 * 比赛参考代码: [【科普建模】JDATA3 用户对品类下店铺的购买预测](https://mp.weixin.qq.com/s?__biz=Mzg2MTEwNDQxNQ==&mid=2247483702&idx=1&sn=df621247b4790471063ddbeb15ad81c3&chksm=ce1d7146f96af85001e47999cb447d86820b082570c39de0c4ddc18dcba0b233697d5ef2e0ae&mpshare=1&scene=23&srcid=#rd)
+* 滑窗法介绍：[数据挖掘比赛之“滑窗法”](https://blog.csdn.net/oXiaoBuDianEr123/article/details/79309022)
